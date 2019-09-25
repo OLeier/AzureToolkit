@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component'; // Delete this
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { SearchComponent } from './search/search.component';
+import { CommonModule } from './common/common.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SearchComponent } from './search/search.component';
       { path: 'search', component: SearchComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    ]),
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
