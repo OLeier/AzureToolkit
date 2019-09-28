@@ -13,7 +13,9 @@ export class CognitiveService {
 
     searchImages(searchTerm: string): Observable<BingSearchResponse> {
         //let url = 'https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=${searchTerm}';
-        let url = 'https://imagesearch3.cognitiveservices.azure.com/bing/v7.0/images/search?q=' + searchTerm;
+        //let url = 'https://imagesearch3.cognitiveservices.azure.com/bing/v7.0/images/search?q=' + searchTerm;
+        // The string must be surrounded with backticks (`) to indicate that it is an ES2015 template literal (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
+        let url = `https://imagesearch3.cognitiveservices.azure.com/bing/v7.0/images/search?q=${searchTerm}`;
         return this.http.get(url, this.bingSearchAPIKey)
             .map(response => response as BingSearchResponse)
             .catch(this.handleError);
