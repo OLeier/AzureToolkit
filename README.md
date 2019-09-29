@@ -53,4 +53,6 @@ yo aspnetcore-spa -> ## Please use "dotnet new" templates instead ### This Yeoma
 - Tutorial Lab01: Implementing Bing Search Services
 - Tutorial Lab02: Implementing The Computer Vision Service
 - Self-Assessment Lab: Cognitive Services
-    
+ 
+
+[https://azuretoolkit-oleier.azurewebsites.net/](https://azuretoolkit-oleier.azurewebsites.net/ "AzureToolkit")
