@@ -49,6 +49,7 @@ namespace AzureToolkit
 			else
 			{
 				app.UseExceptionHandler("/Error");
+				app.UseForwardedHeaders();
 				app.UseHsts();
 			}
 
