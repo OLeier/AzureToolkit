@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Threading.Tasks;
 
 namespace AzureToolkit
 {
@@ -42,14 +43,24 @@ namespace AzureToolkit
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
+			app.Use(async (context, next) =>
+			{
+				context.Response.OnStarting(() =>
+				{
+					context.Response.Headers.Add("MyHeader", "GotItWorking!!!");
+					return Task.FromResult(0);
+				});
+				await next();
+			});
+
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
+				app.UseDatabaseErrorPage();
 			}
 			else
 			{
 				app.UseExceptionHandler("/Error");
-				app.UseForwardedHeaders();
 				app.UseHsts();
 			}
 
@@ -76,6 +87,7 @@ namespace AzureToolkit
 					spa.UseAngularCliServer(npmScript: "start");
 				}
 			});
+
 		}
 	}
 }
