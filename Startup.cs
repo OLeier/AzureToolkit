@@ -38,6 +38,14 @@ namespace AzureToolkit
 				options.MaxAge = TimeSpan.FromDays(60);
 				//options.ExcludedHosts.Add("example.com");
 				//options.ExcludedHosts.Add("www.example.com");
+
+				/*
+				UseHsts excludes the following loopback hosts:
+				• localhost: The IPv4 loopback address.
+				• 127.0.0.1 : The IPv4 loopback address.
+				• [::1] : The IPv6 loopback address.
+				*/
+				options.ExcludedHosts.Clear();
 			});
 
 		}
@@ -61,6 +69,7 @@ namespace AzureToolkit
 			{
 				app.UseDeveloperExceptionPage();
 				app.UseDatabaseErrorPage();
+				app.UseHsts();
 			}
 			else
 			{
@@ -113,7 +122,10 @@ namespace AzureToolkit
 			# Optional: „includeSubDomains“
 			# Header set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
 			*/
-			headers.Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
+			if (!headers.ContainsKey("Strict-Transport-Security"))
+			{
+				headers.Add("Strict-Transport-Security", "max-age=63072000; includeSubDomains; preload");
+			}
 
 			/*
 			#2) X-Content-Type-Options
