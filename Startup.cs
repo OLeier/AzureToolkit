@@ -57,7 +57,7 @@ namespace AzureToolkit
 			{
 				context.Response.OnStarting(() =>
 				{
-					context.Response.Headers.Add("MyHeader", "GotItWorking!!!");
+					//context.Response.Headers.Add("MyHeader", "GotItWorking!!!");
 					Startup.AddSecurityHeaders(context.Response.Headers);
 					Trace.WriteLine("context.Response.Headers: " + context.Response.Headers.Count);
 					return Task.FromResult(0);
@@ -69,14 +69,14 @@ namespace AzureToolkit
 			{
 				app.UseDeveloperExceptionPage();
 				app.UseDatabaseErrorPage();
-				app.UseHsts();
 			}
 			else
 			{
 				app.UseExceptionHandler("/Error");
-				app.UseHsts();
+				//app.UseHsts();
 			}
 
+			app.UseHsts();
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 			app.UseSpaStaticFiles();
