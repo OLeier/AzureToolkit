@@ -87,6 +87,8 @@ Objectives
 • Configure Azure Active Directory B2C to enforce user registration and authenticated sign-in to your application.
 • Implement code that manages the user information that you collected at sign-in, implementing code on both the Angular side and the ASP.NET Core side of your application.
 
+[https://docs.microsoft.com/de-de/azure/active-directory/develop/v1-protocols-oauth-code](https://docs.microsoft.com/de-de/azure/active-directory/develop/v1-protocols-oauth-code)
+
 # Module 4 | Data Storage
 
 Objectives
