@@ -1,5 +1,6 @@
-import { Injectable, InjectionToken, Inject } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Injectable, /*InjectionToken, */Inject } from '@angular/core';
+//import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -8,18 +9,20 @@ import { User, AADUser } from '../models/user';
 
 @Injectable()
 export class UserService {
-    private originUrl: string;
-    private aadUser: AADUser;
 
-    constructor(private http: Http, @Inject('ORIGIN_URL') originUrl: string) {
-        this.originUrl = originUrl;
+    //private originUrl: string;
+    private aadUser: AADUser;
+    //private http: HttpClient;
+
+  constructor(private http: HttpClient, @Inject('BASE_URL') private originUrl: string) {
+        //this.originUrl = originUrl;
     }
 
     public getUser(): Observable<User> {
-        return this.http.get(`${this.originUrl}/.auth/me`)
+        return this.http.get(`${this.originUrl}.auth/me`)
             .map(response => {
                 try {
-                    this.aadUser = response.json()[0] as AADUser;
+                    this.aadUser = response[0] as AADUser;
    
                     let user = new User();
                     user.userId = this.aadUser.user_id;
@@ -38,13 +41,13 @@ export class UserService {
                     return user;
                 }
                 catch (Exception) {
-                    console.log(`Error: ${Exception}`);
+                    console.log(`UserService.getUser-Error: ${Exception}`);
                 }
             }).catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
+        console.error('An error occurred in UserService', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
 }

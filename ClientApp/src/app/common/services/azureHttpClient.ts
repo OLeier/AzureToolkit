@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 //import { Http, Headers } from '@angular/http';  // @deprecated use @angular/common/http instead
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 @Injectable()
 export class AzureHttpClient {
 
