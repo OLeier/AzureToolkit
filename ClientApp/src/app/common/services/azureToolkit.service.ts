@@ -1,5 +1,5 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { /*Headers,*/ HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -8,14 +8,15 @@ import 'rxjs/add/operator/map';
 export class AzureToolkitService {
     private originUrl: string;
 
-    constructor(private http: Http, @Inject('ORIGIN_URL')originUrl: string) {
+    constructor(private http: HttpClient, @Inject('BASE_URL')originUrl: string) {
         this.originUrl = originUrl;
     }
 
     public saveImage(imagePostRequest: { url: string, id: string, encodingFormat: string}): Observable<boolean> {
-        return this.http.post('${this.originUrl}/api/images', imagePostRequest)
+        return this.http.post(`${this.originUrl}/api/images`, imagePostRequest)
             .map(response => {
-                return response.ok;
+                //return response.ok;
+                return true;
             }).catch(this.handleError);
     }
     
