@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { AzureToolkitService } from '../common/services/azureToolkit.service';
 import { CognitiveService } from '../common/services/cognitive.service';
 import { ImageResult } from '../common/models/bingSearchResponse';
 import { ComputerVisionRequest, ComputerVisionResponse } from '../common/models/computerVisionResponse';
@@ -17,7 +18,9 @@ export class SearchComponent {
     currentItem: ImageResult | null;
     isAnalyzing = false;
 
-    constructor(private cognitiveService: CognitiveService) { }
+    currentItemSaved: boolean;
+
+    constructor(private cognitiveService: CognitiveService, private azureToolkitService: AzureToolkitService) { }
 
     search(searchTerm: string) {
         this.searchResults = null;
@@ -31,6 +34,7 @@ export class SearchComponent {
 
     analyze(result: ImageResult) {
         this.currentItem = result;
+        this.currentItemSaved = false;
         this.currentAnalytics = null;
         this.isAnalyzing = true;
         this.cognitiveService.analyzeImage({ url: result.thumbnailUrl } as ComputerVisionRequest).subscribe(result => {
@@ -38,5 +42,16 @@ export class SearchComponent {
             this.isAnalyzing = false;
         });
         window.scroll(0, 0);
+    }
+
+    saveImage() {
+        let transferObject = {
+            url: this.currentItem.thumbnailUrl,
+            encodingFormat: this.currentItem.encodingFormat,
+            id: this.currentItem.imageId
+        }
+        this.azureToolkitService.saveImage(transferObject).subscribe(saveSuccessful => {
+            this.currentItemSaved = saveSuccessful;
+        });
     }
 }

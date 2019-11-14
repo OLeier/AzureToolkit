@@ -131,6 +131,8 @@ Objectives
   dotnet add package WindowsAzure.Storage
   dotnet restore
 
+- To Call Your Web API from Angular
+
 # Module 5 | Azure Search Service
 
 Objectives
