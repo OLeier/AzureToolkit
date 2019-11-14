@@ -89,11 +89,47 @@ Objectives
 
 [https://docs.microsoft.com/de-de/azure/active-directory/develop/v1-protocols-oauth-code](https://docs.microsoft.com/de-de/azure/active-directory/develop/v1-protocols-oauth-code)
 
+Lab Requirements
+
+Task: Show the Job Title of the user in addition to their name on the Home screen.
+
+User Story: As a user I want to be able to see my Job Title next to my name whenever I log in.
+
+Acceptance Criteria:
+
+        The job title of the currently logged in user will be displayed using the following format: "Hello John Smith, Manager"
+
 # Module 4 | Data Storage
 
 Objectives
 • Create an Azure Storage container (Azure Blob storage) and develop an ASP.NET Web API that can be used to store images.
 • Create an Azure SQL Database and implement the code to store the metadata (tags, description, title) associated with images.
+
+- Resource Content
+- Azure Storage Overview
+- Azure Blob Storage, https://docs.microsoft.com/en-us/azure/storage/storage-blob-storage-tiers
+- Azure SQL Database
+- Video: SQL Firewalls
+- Video: Entity Framework Core
+- Entity Framework Core Contexts
+- Video: Entity Framework Core Contexts In Depth
+- Entity Framework Core Migrations
+- Video: Entity Framework Core Migrations
+- Creating .NET Core Web APIs
+- Tutorial Labs
+
+        Implementing Blob Storage
+
+        In this lab, you will create an Azure Storage container and then add photos to the container using an ASP.NET Web API.
+        Implementing an Azure SQL Database
+
+        In this lab, you will store the metadata (tags, description, title) for a user's images in an Azure SQL Database so that when they retrieve their images, they get all the metadata information as well.
+
+- To Create An Azure Storage Account
+- To Create A Blob Storage Container
+- To Create A Web API for Storing Images
+  dotnet add package WindowsAzure.Storage
+  dotnet restore
 
 # Module 5 | Azure Search Service
 
