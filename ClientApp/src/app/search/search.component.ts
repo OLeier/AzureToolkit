@@ -24,7 +24,7 @@ export class SearchComponent {
     isAnalyzing = false;
 
     currentItemSaved: boolean;
-    user: User;
+    user = new User();
 
     constructor(private cognitiveService: CognitiveService, private azureToolkitService: AzureToolkitService, private userService: UserService) { }
 
