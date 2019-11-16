@@ -144,6 +144,26 @@ Objectives
   dotnet ef database update
 
 - To Implement Your DB Context
+- Lab Overview
+
+In this module, you learned how to store data in both Azure Storage and an Azure SQL Database.
+
+In this self-assessment lab, you will extend the data that is being stored to include the "people data" that you added during the Module 1 self-assessment lab.
+
+If successful, the number of people in a photo, their ages and their genders will be stored in the Azure SQL database.
+
+Lab Requirements
+
+Task: Retain the number of people in a image, their genders and their ages.
+
+User Story: As a user I want to know how many people are in an image, their ages and their genders, so I can search on these additional data tags.
+
+Acceptance Criteria:
+
+        The total number of people in an image is persisted.
+        For each person their age is persisted.
+        For each person their gender is persisted.
+
 
 # Module 5 | Azure Search Service
 
