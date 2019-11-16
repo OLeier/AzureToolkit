@@ -49,7 +49,7 @@ yo aspnetcore-spa -> ## Please use "dotnet new" templates instead ### This Yeoma
 
 [https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.0](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/routing?view=aspnetcore-3.0 "Routing to controller actions in ASP.NET Core")
 
-- Tutorial Lab03: Deploying To Azure
+- Tutorial Lab03: Deploying To Azure (* Web App *)
 
 [https://git-scm.com/](https://git-scm.com/ "Git")
 
@@ -63,8 +63,8 @@ Objectives
 
 - Resource Content
 - Labs Overview And Configuration
-- Tutorial Lab01: Implementing Bing Search Services
-- Tutorial Lab02: Implementing The Computer Vision Service
+- Tutorial Lab01: Implementing Bing Search Services (* Bing Search *)
+- Tutorial Lab02: Implementing The Computer Vision Service (* Computer Vision *)
 - Self-Assessment Lab: Cognitive Services
  
 Lab Requirements
@@ -90,6 +90,8 @@ Objectives
 [https://docs.microsoft.com/de-de/azure/active-directory/develop/v1-protocols-oauth-code](https://docs.microsoft.com/de-de/azure/active-directory/develop/v1-protocols-oauth-code)
 
 Lab Requirements
+
+(* Azure Active Directory B2C *)
 
 Task: Show the Job Title of the user in addition to their name on the Home screen.
 
@@ -125,13 +127,23 @@ Objectives
 
         In this lab, you will store the metadata (tags, description, title) for a user's images in an Azure SQL Database so that when they retrieve their images, they get all the metadata information as well.
 
-- To Create An Azure Storage Account
+- To Create An Azure Storage Account (* Storage account *)
 - To Create A Blob Storage Container
 - To Create A Web API for Storing Images
   dotnet add package WindowsAzure.Storage
   dotnet restore
 
 - To Call Your Web API from Angular
+
+- To Create a SQL Database (* SQL Database *)
+- To Create an Entity Framework Context
+  dotnet add package Microsoft.EntityFrameworkCore.SqlServer -> v2.1.11 für .NETCoreApp,Version=v2.1
+  dotnet add package Microsoft.EntityFrameworkCore.Design -v 2.1.11
+
+  dotnet ef migrations add InitialCreate
+  dotnet ef database update
+
+- To Implement Your DB Context
 
 # Module 5 | Azure Search Service
 

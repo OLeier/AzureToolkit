@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using WebApplicationBasic.Models;
 
 namespace AzureToolkit
 {
@@ -41,12 +43,19 @@ namespace AzureToolkit
 
 				/*
 				UseHsts excludes the following loopback hosts:
-				• localhost: The IPv4 loopback address.
-				• 127.0.0.1 : The IPv4 loopback address.
-				• [::1] : The IPv6 loopback address.
+				ï¿½ localhost: The IPv4 loopback address.
+				ï¿½ 127.0.0.1 : The IPv4 loopback address.
+				ï¿½ [::1] : The IPv6 loopback address.
 				*/
 				options.ExcludedHosts.Clear();
 			});
+
+			/*
+			 * Once again, in a real-world project you should NOT hard code a connection string in code, you should read it in from a configuration file. But we are keeping it simple for the purpose of this course.
+			 */
+			//var connection = @"Server=tcp:azuretoolkit-oleier.database.windows.net,1433;Initial Catalog=azuretoolkit;Persist Security Info=False;User ID=OLeier;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+			var connection = @"Server=tcp:azuretoolkit-oleier.database.windows.net,1433;Initial Catalog=azuretoolkit;Persist Security Info=False;User ID=OLeier;Password=i5ffPv48z3FKRj9XEGpZ;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+			services.AddDbContext<AzureToolkitContext>(options => options.UseSqlServer(connection));
 
 		}
 
@@ -118,8 +127,8 @@ namespace AzureToolkit
 			/*
 			#1) HTTP Strict Transport Security (HSTS)
 			# HSTS verwenden
-			# Pflichtangabe: „max-age“
-			# Optional: „includeSubDomains“
+			# Pflichtangabe: ï¿½max-ageï¿½
+			# Optional: ï¿½includeSubDomainsï¿½
 			# Header set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
 			*/
 			if (!headers.ContainsKey("Strict-Transport-Security"))
