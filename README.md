@@ -190,4 +190,28 @@ Tutorial Lab01: Reading From Storage
 - To Display User Images
 
 Tutorial Lab02: Implementing Azure Search
-- To Create An Azure Search Service
+- To Create An Azure Search Service (* Azure Cognitive Search *)
+- To Connect Azure Search to Your Azure SQL Database
+- To Configure a Search Index
+- To Implement Azure Search in Your App
+  dotnet add package Microsoft.Azure.Search
+
+Lab Overview
+
+In this module, you learned how to implement Azure Search.
+
+In this self-assessment lab, you will extend your search criteria to include only those photos with people.
+
+If successful, a user should be able to search their gallery for images with people in them.
+
+Lab Requirements
+
+Task: Enable searching by "people"
+
+User Story: As a user I want to be able to search for images containing people
+
+Acceptance Criteria:
+
+    There is a new option available in the UI that enables the user to search for images that contain people.
+    When searching for images with people, the images that are returned are photos that contained "Faces"
+
