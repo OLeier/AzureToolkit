@@ -187,4 +187,5 @@ Objectives
 Tutorial Lab01: Reading From Storage
 - To Retrieve Images from A SQL Database
 - To Create A Gallery View for User Images
+- To Display User Images
 - 
