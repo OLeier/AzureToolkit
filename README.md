@@ -171,3 +171,20 @@ Objectives
 • Implement the code required to retrieve information from Azure Storage and your Azure SQL database.
 • Create a gallery View in your application that can display all of the saved images for the user that is logged-in.
 • Implement Azure Search within your application so that users can search their stored images for the ones that they want to view.
+
+- Azure Search Service
+- Video: Azure Search Servicee
+- Video: Azure Search Indexes
+- Video: Azure Search Data Providers
+- Video: Azure Search APIs
+- Full Text Search in Azure Search
+- Simple Query Syntax in Azure Search
+  https://docs.microsoft.com/de-de/azure/search/query-simple-syntax
+- Lucene Query Syntax in Azure Search
+- How to Page Search Results in Azure Search
+  GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
+
+Tutorial Lab01: Reading From Storage
+- To Retrieve Images from A SQL Database
+- To Create A Gallery View for User Images
+- 
