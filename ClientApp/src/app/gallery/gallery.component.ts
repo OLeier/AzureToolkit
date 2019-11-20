@@ -18,6 +18,7 @@ export class GalleryComponent implements OnInit {
   constructor(private userService: UserService, private azureToolkitService: AzureToolkitService) { }
 
   ngOnInit(): void {
+    /*
     this.userService.getUser().subscribe(user => {
       this.user = user;
 
@@ -25,5 +26,6 @@ export class GalleryComponent implements OnInit {
         this.savedImages = images;
       })
     });
+    */
   }
 }
