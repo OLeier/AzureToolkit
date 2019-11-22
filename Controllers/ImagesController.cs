@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Search;
+using Microsoft.Azure.Search.Models;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using WebApplicationBasic.Models;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace WebApplicationBasic.Controllers
 {
@@ -69,6 +71,20 @@ namespace WebApplicationBasic.Controllers
 		{
 			var images = _context.SavedImages.Where(image => image.UserId == userID);
 			return Ok(images);
+		}
+
+		[HttpGet("search/{userId}/{term}")]
+		public IActionResult SearchImages(string userId, string term)
+		{
+			string searchServiceName = "azuretoolkitsearch-oleier";
+			string queryApiKey = "DE7074C6C17307AFACFF50B42D642E2A";
+
+			SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "description", new SearchCredentials(queryApiKey));
+
+			SearchParameters parameters = new SearchParameters() { Filter = $"UserId eq '{userId}'" };
+			DocumentSearchResult<SavedImage> results = indexClient.Documents.Search<SavedImage>(term, parameters);
+
+			return Ok(results.Results.Select((savedImage) => savedImage.Document));
 		}
 	}
 
