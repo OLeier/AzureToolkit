@@ -16,6 +16,7 @@ export class UserService {
 
   constructor(private http: HttpClient, @Inject('BASE_URL') originUrl: string) {
     this.originUrl = originUrl;
+    console.log('UserService: ' + originUrl);
   }
 
   public getUser(): Observable<User> {
