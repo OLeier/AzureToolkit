@@ -20,12 +20,11 @@ export class SearchComponent {
     isSearching = false;
 
     currentAnalytics: ComputerVisionResponse | null;
-    currentItem: ImageResult | null;
+    currentItem: ImageResult;
     isAnalyzing = false;
 
     currentItemSaved: boolean;
-    //user: User;
-    user = new User();
+    user: User;
 
     constructor(private cognitiveService: CognitiveService, private azureToolkitService: AzureToolkitService, private userService: UserService) { }
 

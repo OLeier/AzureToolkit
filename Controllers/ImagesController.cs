@@ -78,8 +78,9 @@ namespace WebApplicationBasic.Controllers
 		{
 			string searchServiceName = "azuretoolkitsearch-oleier";
 			string queryApiKey = "DE7074C6C17307AFACFF50B42D642E2A";
+			string searchServiceIndexName = "description"; // the name of the index you created on the SavedImages table
 
-			SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "description", new SearchCredentials(queryApiKey));
+			SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, searchServiceIndexName, new SearchCredentials(queryApiKey));
 
 			SearchParameters parameters = new SearchParameters() { Filter = $"UserId eq '{userId}'" };
 			DocumentSearchResult<SavedImage> results = indexClient.Documents.Search<SavedImage>(term, parameters);

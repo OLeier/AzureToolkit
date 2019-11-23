@@ -30,7 +30,7 @@ export class AzureToolkitService {
   }
 
   public searchImage(userId: string, searchTerm: string): Observable<SavedImage[]> {
-    return this.http.post('${this.originUrl}/api/images/search/${userId}/${searchTerm}', null)
+    return this.http.get(`${this.originUrl}/api/images/search/${userId}/${searchTerm}`)
       .map(response => {
         return response as SavedImage[];
       }).catch(this.handleError);
