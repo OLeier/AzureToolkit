@@ -141,7 +141,10 @@ namespace AzureToolkit
 			# Verhindert mime based attacks, nur IE und Chrome
 			Header set X-Content-Type-Options "nosniff"
 			*/
-			headers.Add("X-Content-Type-Options", "nosniff");
+			if (!headers.ContainsKey("X-Content-Type-Options"))
+			{
+				headers.Add("X-Content-Type-Options", "nosniff");
+			}
 
 			/*
 			#3) X-XSS-Protection
@@ -149,14 +152,20 @@ namespace AzureToolkit
 			# Optional: mode=block
 			Header set X - XSS - Protection "1; mode=block"
 			*/
-			headers.Add("X-XSS-Protection", "1; mode=block");
+			if (!headers.ContainsKey("X-XSS-Protection"))
+			{
+				headers.Add("X-XSS-Protection", "1; mode=block");
+			}
 
 			/*
 			#4) X-Frame-Options
 			# Begrenzung der frame/iframe Darstellung
 			Header append X - Frame - Options "SAMEORIGIN"
 			*/
-			headers.Add("X-Frame-Options", "SAMEORIGIN");
+			if (!headers.ContainsKey("X-Frame-Options"))
+			{
+				headers.Add("X-Frame-Options", "SAMEORIGIN");
+			}
 
 			/*
 			#5) HTTP Public Key Pinning (HPKP)
@@ -190,7 +199,10 @@ namespace AzureToolkit
 			# Header set Referrer-Policy "origin-when-cross-origin"
 			Header set Referrer - Policy "no-referrer"
 			*/
-			headers.Add("Referrer-Policy", "no-referrer");
+			if (!headers.ContainsKey("Referrer-Policy"))
+			{
+				headers.Add("Referrer-Policy", "no-referrer");
+			}
 
 			/*
 			#10) Expect-CT
