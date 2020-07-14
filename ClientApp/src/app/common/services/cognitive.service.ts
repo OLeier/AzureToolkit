@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { AzureHttpClient } from './azureHttpClient';
+import { AzureHttpClient } from './azure-http-client';
 import { BingSearchResponse } from '../models/bing-search-response';
 import { ComputerVisionRequest, ComputerVisionResponse } from '../models/computer-vision-response';
 

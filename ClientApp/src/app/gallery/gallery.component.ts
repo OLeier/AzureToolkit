@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../common/services/user.service';
 import { User } from '../common/models/user';
 
-import { AzureToolkitService } from '../common/services/azureToolkit.service';
+import { AzureToolkitService } from '../common/services/azure-toolkit.service';
 import { SavedImage } from '../common/models/saved-image';
 
 @Component({

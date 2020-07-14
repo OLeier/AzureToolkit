@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
-import { AzureHttpClient } from './services/azureHttpClient';
-import { AzureToolkitService } from './services/azureToolkit.service';
+import { AzureHttpClient } from './services/azure-http-client';
+import { AzureToolkitService } from './services/azure-toolkit.service';
 import { CognitiveService } from './services/cognitive.service';
 import { UserService } from './services/user.service';
 

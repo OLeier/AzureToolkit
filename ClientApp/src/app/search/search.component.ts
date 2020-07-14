@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AzureToolkitService } from '../common/services/azureToolkit.service';
+import { AzureToolkitService } from '../common/services/azure-toolkit.service';
 import { CognitiveService } from '../common/services/cognitive.service';
 import { ImageResult } from '../common/models/bing-search-response';
 import { ComputerVisionRequest, ComputerVisionResponse } from '../common/models/computer-vision-response';
