@@ -1,15 +1,17 @@
 import { Injectable, /*InjectionToken, */Inject } from '@angular/core';
 //import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
+//import 'rxjs/add/operator/catch';
+//import 'rxjs/add/operator/map';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { User, AADUser } from '../models/user';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
-
   private originUrl: string;
   private aadUser: AADUser;
   //private http: HttpClient;
@@ -20,8 +22,8 @@ export class UserService {
   }
 
   public getUser(): Observable<User> {
-    return this.http.get(`${this.originUrl}.auth/me`)
-      .map(response => {
+    return this.http.get(`${this.originUrl}.auth/me`).pipe(
+      map(response => {
 
         try {
           this.aadUser = response[0] as AADUser;
@@ -44,7 +46,9 @@ export class UserService {
         catch (Exception) {
           console.log(`UserService.getUser-Error: ${Exception}`);
         }
-      }).catch(this.handleError);
+      }),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: any): Promise<any> {

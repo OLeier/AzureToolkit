@@ -19,6 +19,10 @@ describe('CounterComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
   it('should display a title', async(() => {
     const titleText = fixture.nativeElement.querySelector('h1').textContent;
     expect(titleText).toEqual('Counter');

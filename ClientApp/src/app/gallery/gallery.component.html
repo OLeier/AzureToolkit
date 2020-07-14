@@ -1,35 +1,36 @@
 <div class="page-header">
-  <h1>Gallery</h1>
-
-  <p>See all images you have saved. Search image descriptions.</p>
-
-  <div class="form-group">
-    <div class="col-sm-4">
-      <input type="text" class="form-control" id="searchInput" #searchInput>
+    <h1>Gallery</h1>
+  
+    <p>See all images you have saved. Search image descriptions.</p>
+  
+    <div class="form-group">
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="searchInput" #searchInput>
+      </div>
+      <button type="submit" class="btn btn-default" (click)="search(searchInput.value)">Search</button>
     </div>
-    <button type="submit" class="btn btn-default" (click)="search(searchInput.value)">Search</button>
+    <div *ngIf="searchResults">
+      <h2><b>Search Results</b></h2> {{searchResults.length}}<br />
+      <div class="results">
+        <div *ngFor="let result of searchResults" class="card">
+          <img src="{{result.StorageUrl}}" />
+        </div>
+      </div>
+    </div>
   </div>
-  <div *ngIf="searchResults">
-    <h2><b>Search Results</b></h2> {{searchResults.length}}<br />
+  
+  <div *ngIf="savedImages">
+    <h2><b>Saved Images</b></h2> {{savedImages.length}}<br />
     <div class="results">
-      <div *ngFor="let result of searchResults" class="card">
-        <img src="{{result.StorageUrl}}" />
+      <div *ngFor="let savedImage of savedImages" class="card">
+        <img src="{{savedImage.StorageUrl}}" />
+        <div>
+          <h4><b>{{savedImage.Description}}</b></h4>
+        </div>
+        <div *ngIf="!savedImages">
+          <h4>No images to display.</h4>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<div *ngIf="savedImages">
-  <h2><b>Saved Images</b></h2> {{savedImages.length}}<br />
-  <div class="results">
-    <div *ngFor="let savedImage of savedImages" class="card">
-      <img src="{{savedImage.StorageUrl}}" />
-      <div>
-        <h4><b>{{savedImage.Description}}</b></h4>
-      </div>
-      <div *ngIf="!savedImages">
-        <h4>No images to display.</h4>
-      </div>
-    </div>
-  </div>
-</div>
+  
