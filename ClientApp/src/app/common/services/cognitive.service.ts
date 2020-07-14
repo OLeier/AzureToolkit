@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { AzureHttpClient } from './azureHttpClient';
-import { BingSearchResponse } from '../models/bingSearchResponse';
-import { ComputerVisionRequest, ComputerVisionResponse } from '../models/computerVisionResponse';
+import { BingSearchResponse } from '../models/bing-search-response';
+import { ComputerVisionRequest, ComputerVisionResponse } from '../models/computer-vision-response';
 
 @Injectable()
 export class CognitiveService {

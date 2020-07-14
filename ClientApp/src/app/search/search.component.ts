@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 import { AzureToolkitService } from '../common/services/azureToolkit.service';
 import { CognitiveService } from '../common/services/cognitive.service';
-import { ImageResult } from '../common/models/bingSearchResponse';
-import { ComputerVisionRequest, ComputerVisionResponse } from '../common/models/computerVisionResponse';
-import { ImagePostRequest } from '../common/models/imagePostRequest';
+import { ImageResult } from '../common/models/bing-search-response';
+import { ComputerVisionRequest, ComputerVisionResponse } from '../common/models/computer-vision-response';
+import { ImagePostRequest } from '../common/models/image-post-request';
 
 import { UserService } from '../common/services/user.service';
 import { User } from '../common/models/user';

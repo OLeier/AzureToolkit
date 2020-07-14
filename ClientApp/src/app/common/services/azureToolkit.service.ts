@@ -3,8 +3,8 @@ import { /*Headers,*/ HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import { ImagePostRequest } from '../models/imagePostRequest';
-import { SavedImage } from '../models/savedImage';
+import { ImagePostRequest } from '../models/image-post-request';
+import { SavedImage } from '../models/saved-image';
 
 @Injectable()
 export class AzureToolkitService {

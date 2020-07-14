@@ -3,7 +3,7 @@ import { UserService } from '../common/services/user.service';
 import { User } from '../common/models/user';
 
 import { AzureToolkitService } from '../common/services/azureToolkit.service';
-import { SavedImage } from '../common/models/savedImage';
+import { SavedImage } from '../common/models/saved-image';
 
 @Component({
   selector: 'gallery',
