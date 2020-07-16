@@ -1,9 +1,9 @@
 export interface SavedImage {
-    SavedImageId: number;
-    UserId: string;
-    Description: string;
-    Tags: Array<SavedImageTag>;
-    StorageUrl: string;
+    savedImageId: number;
+    userId: string;
+    description: string;
+    tags: Array<SavedImageTag>;
+    storageUrl: string;
   }
   
   export interface SavedImageTag {
