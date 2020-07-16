@@ -53,3 +53,10 @@ https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
         "node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.scss"
         ]
+
+## update commands
+    npm install -g npm@latest
+    npm install -g npm@next     // upgrade to the most recent release
+
+    ng update
+    ng update @angular/cli
