@@ -61,3 +61,4 @@ https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
     ng update
     ng update @angular/cli
     ng update @angular/core
+    npm update
