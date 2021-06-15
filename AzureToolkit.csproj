@@ -17,7 +17,7 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
-    <Version>1.0.5</Version>
+    <Version>1.1.0</Version>
     <UserSecretsId>684ca4e3-a354-4706-8da2-c55330fadd4e</UserSecretsId>
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.7" />
     <PackageReference Include="Microsoft.Azure.Search" Version="10.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -44,12 +44,37 @@
     <Compile Remove="ClientApp\dist\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\dist\**" />
+    <EmbeddedResource Remove="ClientApp\dist\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\dist\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="ClientApp\dist\**" />
-    <None Remove="ClientApp\dist\**" />
+    <None Remove="ClientApp\dist\3rdpartylicenses.txt" />
+    <None Remove="ClientApp\dist\assets\368313CCB09FD4189859374E3AEB1CEBAFA67013.jpeg" />
+    <None Remove="ClientApp\dist\assets\3A6FE8FB1571B09B0D2741B6CE1C217320816A04.jpeg" />
+    <None Remove="ClientApp\dist\assets\8B84EEA3F2B9DE4F0FD184DE1B1807C2183D500F.jpeg" />
+    <None Remove="ClientApp\dist\assets\946FF73C587A45A3D851AB5025EB967A8234503B.jpeg" />
+    <None Remove="ClientApp\dist\assets\C621E15F0DA5083DDA1E4DB6D07F415A38F2B9F1.jpeg" />
+    <None Remove="ClientApp\dist\assets\D30DFA0F40F3410C282A831D55AF58D9792C225F.jpeg" />
+    <None Remove="ClientApp\dist\assets\F3F5FC85AF8C1662F13FD957ED19CC521D56BAB7.jpeg" />
+    <None Remove="ClientApp\dist\assets\SavedImage.json" />
+    <None Remove="ClientApp\dist\assets\vssver2.scc" />
+    <None Remove="ClientApp\dist\favicon.ico" />
+    <None Remove="ClientApp\dist\glyphicons-halflings-regular.060b2710bdbbe3dfe48b.svg" />
+    <None Remove="ClientApp\dist\glyphicons-halflings-regular.4692b9ec53fd5972caa2.ttf" />
+    <None Remove="ClientApp\dist\glyphicons-halflings-regular.5be1347c682810f199c7.eot" />
+    <None Remove="ClientApp\dist\glyphicons-halflings-regular.82b1212e45a2bc35dd73.woff" />
+    <None Remove="ClientApp\dist\glyphicons-halflings-regular.be810be3a3e14c682a25.woff2" />
+    <None Remove="ClientApp\dist\index.html" />
+    <None Remove="ClientApp\dist\main-es2015.3484aeaea4fb7d22de1b.js" />
+    <None Remove="ClientApp\dist\main-es5.3484aeaea4fb7d22de1b.js" />
+    <None Remove="ClientApp\dist\polyfills-es2015.a2254811316f0a5b4c3c.js" />
+    <None Remove="ClientApp\dist\polyfills-es5.15a524f7a9dde0c489ef.js" />
+    <None Remove="ClientApp\dist\runtime-es2015.bafd38b78a18737f75a3.js" />
+    <None Remove="ClientApp\dist\runtime-es5.bafd38b78a18737f75a3.js" />
+    <None Remove="ClientApp\dist\styles.e5060f0ab34404d11f6e.css" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
@@ -75,6 +100,7 @@
       <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
