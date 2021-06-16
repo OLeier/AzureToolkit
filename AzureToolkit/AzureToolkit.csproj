@@ -33,7 +33,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.7" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
   </ItemGroup>
  
   <!--ItemGroup>
