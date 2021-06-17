@@ -17,9 +17,9 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <UserSecretsId>684ca4e3-a354-4706-8da2-c55330fadd4e</UserSecretsId>
-    <EnableNETAnalyzers>false</EnableNETAnalyzers>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
 	<AnalysisMode>AllEnabledByDefault</AnalysisMode>
 	<StartupObject>AzureToolkit.Program</StartupObject>
   </PropertyGroup>

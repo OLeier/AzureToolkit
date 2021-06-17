@@ -72,7 +72,7 @@ namespace AzureToolkit
 					Trace.WriteLine("context.Response.Headers: " + context.Response.Headers.Count);
 					return Task.FromResult(0);
 				});
-				await next();
+				await next().ConfigureAwait(false);
 			});
 
 			if (env.IsDevelopment())

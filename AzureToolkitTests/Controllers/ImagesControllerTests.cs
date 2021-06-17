@@ -37,10 +37,9 @@ namespace WebApplicationBasic.Controllers.Tests
 
 			var request = new ImagePostRequest()
 			{
-				URL = "https://azuretkstorageoleier.blob.core.windows.net/savedimages/D30DFA0F40F3410C282A831D55AF58D9792C225F.jpeg",
+				URL = new Uri("https://azuretkstorageoleier.blob.core.windows.net/savedimages/D30DFA0F40F3410C282A831D55AF58D9792C225F.jpeg"),
 				EncodingFormat = "jpg",
-				Id = Guid.NewGuid().ToString(),
-				Tags = Array.Empty<string>()
+				Id = Guid.NewGuid().ToString()
 			};
 			Task<IActionResult> task = controller.PostImage(request);
 			task.Wait();

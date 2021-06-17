@@ -1,12 +1,11 @@
+using Azure.Storage.Blobs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Search;
 using Microsoft.Azure.Search.Models;
-#if V11
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-#endif
-using Azure.Storage.Blobs;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -19,18 +18,11 @@ namespace WebApplicationBasic.Controllers
 	{
 		private readonly BlobContainerClient _container;
 
-#if V11
-		private readonly CloudBlobContainer _container;
-
-		// In a production application, you wouldn't hard code these values, you'd most likely read them from a configuration file. We're just keeping things simple.
-		private const string storageAccountName = "azuretkstorageoleier";
-		private const string accessKey = "ZzqiuHalCkc9FUILTZ6JZ4Be1Z3kNgsBw1siCvGMOjPY+kLvtS5B7rXCkdlSUepqJ8vnPjWmaRAy5lCqvmjuXw==";
-#endif
 		private const string connectionString = "DefaultEndpointsProtocol=https;AccountName=azuretkstorageoleier;AccountKey=ZzqiuHalCkc9FUILTZ6JZ4Be1Z3kNgsBw1siCvGMOjPY+kLvtS5B7rXCkdlSUepqJ8vnPjWmaRAy5lCqvmjuXw==;EndpointSuffix=core.windows.net";
 
 		private readonly AzureToolkitContext _context;
 
-		private string ConnectionString
+		private static string ConnectionString
 		{
 			get
 			{
@@ -48,7 +40,7 @@ namespace WebApplicationBasic.Controllers
 			}
 		}
 
-		private string ContainerName
+		private static string ContainerName
 		{
 			get { return "savedimages"; }
 		}
@@ -58,25 +50,21 @@ namespace WebApplicationBasic.Controllers
 			_context = context;
 
 			// Get a reference to a container named "sample-container" and then create it
-			this._container = new BlobContainerClient(this.ConnectionString, this.ContainerName);
-
-#if V11
-			var storageAccount = new CloudStorageAccount(
-				new Microsoft.WindowsAzure.Storage.Auth.StorageCredentials(
-						ImagesController.storageAccountName,
-						ImagesController.accessKey),
-				   true);
-			// Create a blob client.
-			CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-			_container = blobClient.GetContainerReference("savedimages");
-#endif
+			this._container = new BlobContainerClient(ConnectionString, ContainerName);
 		}
 
 		[HttpPost]
 		public async Task<IActionResult> PostImage([FromBody] ImagePostRequest request)
 		{
+			Contract.Requires(request != null);
+			//if (request == null)
+			//{
+			//	throw new ArgumentNullException(nameof(request));
+			//}
+
+			//Uri requestUri = new Uri(request.URL);
 			HttpWebRequest aRequest = (HttpWebRequest)WebRequest.Create(request.URL);
-			HttpWebResponse aResponse = (await aRequest.GetResponseAsync()) as HttpWebResponse;
+			HttpWebResponse aResponse = (await aRequest.GetResponseAsync().ConfigureAwait(false)) as HttpWebResponse;
 
 			// Get a reference to a blob named "sample-file" in a container named "sample-container"
 			string blobName = $"{request.Id}.{request.EncodingFormat}";
@@ -84,26 +72,15 @@ namespace WebApplicationBasic.Controllers
 
 			using (var stream = aResponse.GetResponseStream())
 			{
-				await blockBlob.UploadAsync(stream);
+				await blockBlob.UploadAsync(stream).ConfigureAwait(false);
 			}
-
-#if V11
-			//Upload Image
-			CloudBlockBlob blockBlob = _container.GetBlockBlobReference($"{request.Id}.{request.EncodingFormat}");
-
-			using (var stream = aResponse.GetResponseStream())
-			{
-				await blockBlob.UploadFromStreamAsync(stream);
-			}
-#endif
 
 			//Save metadata
 			var savedImage = new SavedImage()
 			{
 				UserId = request.UserId,
 				Description = request.Description,
-				StorageUrl = blockBlob.Uri.ToString(),
-				Tags = new List<SavedImageTag>()
+				StorageUrl = blockBlob.Uri
 			};
 
 			foreach (var tag in request.Tags)
@@ -120,7 +97,11 @@ namespace WebApplicationBasic.Controllers
 		[HttpGet("{userId}")]
 		public IActionResult GetImages(string userID)
 		{
-			var images = _context.SavedImages.Where(image => image.UserId == userID);
+			// https://docs.microsoft.com/de-de/aspnet/core/data/ef-mvc/read-related-data?view=aspnetcore-5.0
+			// Eager Loading: .Include
+			// Explizites Laden: .Load
+			// Lazy Loading
+			var images = _context.SavedImages.Include(si => si.Tags).Where(image => image.UserId == userID);
 			return Ok(images);
 		}
 
@@ -143,9 +124,14 @@ namespace WebApplicationBasic.Controllers
 	{
 		public string UserId { get; set; }
 		public string Description { get; set; }
-		public string[] Tags { get; set; }
-		public string URL { get; set; }
+		public IList<string> Tags { get; }
+		public Uri URL { get; set; }
 		public string Id { get; set; }
 		public string EncodingFormat { get; set; }
+
+		public ImagePostRequest()
+		{
+			this.Tags = new List<string>();
+		}
 	}
 }

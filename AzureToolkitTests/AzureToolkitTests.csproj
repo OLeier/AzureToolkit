@@ -8,9 +8,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <TargetFramework>.NETCoreApp,Version=v5.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
