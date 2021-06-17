@@ -8,7 +8,7 @@ import { SavedImage } from '../common/models/saved-image';
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
-  //styleUrls: ['./gallery.component.css']
+  styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
 
