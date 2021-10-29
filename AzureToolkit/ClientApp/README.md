@@ -58,6 +58,8 @@ https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
     npm install -g npm@latest
     npm install -g npm@next     // upgrade to the most recent release
 
+    npm install -g @angular/cli
+
     ng update
     ng update @angular/cli
     ng update @angular/core
