@@ -64,4 +64,6 @@ https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
     ng update @angular/cli
     ng update @angular/core
     npm update
+
     npm install typescript@4.1.5 -> 4.2.4
+    ng update @angular/core --migrate-only --from 12.2.12
