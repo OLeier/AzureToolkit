@@ -215,3 +215,6 @@ Acceptance Criteria:
     There is a new option available in the UI that enables the user to search for images that contain people.
     When searching for images with people, the images that are returned are photos that contained "Faces"
 
+# @angular/cli @ "18.2.20"
+
+The output location of the browser build has been updated from "dist" to "dist/browser". You might need to adjust your deployment pipeline or, as an alternative, set outputPath.browser to "" in order to maintain the previous functionality.
