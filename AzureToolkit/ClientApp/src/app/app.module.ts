@@ -8,6 +8,7 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 //import { APP_BASE_HREF } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,7 +33,7 @@ import { SearchComponent } from './search/search.component';
     imports: [
         // Angular CLI: 19.2.15
         // BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-        AppRoutingModule
+        AppRoutingModule, CommonModule
     ],
     providers: [
         provideHttpClient(withInterceptorsFromDi())
@@ -47,5 +48,5 @@ export const appConfig: ApplicationConfig = {
         { provide: APP_ID, useValue: 'ng-cli-universal' },
         provideClientHydration(),
         // ...
-  ]
+    ]
 };

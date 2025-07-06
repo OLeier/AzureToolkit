@@ -228,3 +228,8 @@ ng build
 
 - https://javascript.plainenglish.io/migrating-my-newly-built-portfolio-to-angular-19-b95cb95c2aa6
 - Replace BrowserModule.withServerTransition()
+
+- NG8002: Can't bind to 'ngClass' since it isn't a known property of 'div'
+- https://github.com/medic/cht-core/issues/9759
+- https://www.edureka.co/community/301299/can-t-bind-to-ngclass-since-it-isn-t-a-known-property-of-input
+- aapp.moduls.ts
