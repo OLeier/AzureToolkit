@@ -225,4 +225,6 @@ ng build
 - X [ERROR] NG8001: 'app-nav-menu' is not a known element:
 - X [ERROR] TS-991010: Value at position 0 in the NgModule.imports of AppModule is not a reference
   Value could not be determined statically.
-- BrowserModule.withServerTransition
+
+- https://javascript.plainenglish.io/migrating-my-newly-built-portfolio-to-angular-19-b95cb95c2aa6
+- Replace BrowserModule.withServerTransition()
