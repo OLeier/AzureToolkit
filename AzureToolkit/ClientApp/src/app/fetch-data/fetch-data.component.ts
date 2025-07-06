@@ -2,9 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-fetch-data',
-  templateUrl: './fetch-data.component.html',
-  //styleUrls: ['./fetch-data.component.css']
+    selector: 'app-fetch-data',
+    templateUrl: './fetch-data.component.html',
+    standalone: false
 })
 export class FetchDataComponent implements OnInit {
 

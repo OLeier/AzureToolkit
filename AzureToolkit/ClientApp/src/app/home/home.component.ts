@@ -3,9 +3,9 @@ import { UserService } from '../common/services/user.service';
 import { User } from '../common/models/user';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  //styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    standalone: false
 })
 export class HomeComponent implements OnInit {
 

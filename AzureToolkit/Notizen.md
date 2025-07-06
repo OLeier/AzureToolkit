@@ -218,3 +218,8 @@ Acceptance Criteria:
 # @angular/cli @ "18.2.20"
 
 The output location of the browser build has been updated from "dist" to "dist/browser". You might need to adjust your deployment pipeline or, as an alternative, set outputPath.browser to "" in order to maintain the previous functionality.
+
+# @angular/cli @ "19.2.15"
+
+ng build
+- X [ERROR] NG8001: 'app-nav-menu' is not a known element:
