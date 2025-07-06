@@ -223,3 +223,6 @@ The output location of the browser build has been updated from "dist" to "dist/b
 
 ng build
 - X [ERROR] NG8001: 'app-nav-menu' is not a known element:
+- X [ERROR] TS-991010: Value at position 0 in the NgModule.imports of AppModule is not a reference
+  Value could not be determined statically.
+- BrowserModule.withServerTransition
