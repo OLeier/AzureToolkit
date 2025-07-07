@@ -233,3 +233,6 @@ ng build
 - https://github.com/medic/cht-core/issues/9759
 - https://www.edureka.co/community/301299/can-t-bind-to-ngclass-since-it-isn-t-a-known-property-of-input
 - aapp.moduls.ts
+
+- Error: NG0402: A required Injectable was not found in the dependency injection tree. If you are bootstrapping an NgModule, make sure that the `BrowserModule` is imported.
+- BrowserModule notwendig

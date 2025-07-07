@@ -1,6 +1,6 @@
 
 // Angular CLI: 19.2.15
-// import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { APP_ID } from '@angular/core';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
@@ -33,7 +33,7 @@ import { SearchComponent } from './search/search.component';
     imports: [
         // Angular CLI: 19.2.15
         // BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-        AppRoutingModule, CommonModule
+        AppRoutingModule, CommonModule, BrowserModule
     ],
     providers: [
         provideHttpClient(withInterceptorsFromDi())
