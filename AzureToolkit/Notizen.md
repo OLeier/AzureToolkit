@@ -236,3 +236,5 @@ ng build
 
 - Error: NG0402: A required Injectable was not found in the dependency injection tree. If you are bootstrapping an NgModule, make sure that the `BrowserModule` is imported.
 - BrowserModule notwendig
+
+# @angular/cli @ "20.0.5"
